@@ -1,0 +1,614 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:wght@400;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Paper fall animation ──────────────────────── */
+@keyframes paper-fall {
+  0% {
+    transform: perspective(1400px) rotateX(28deg) rotateZ(-4deg) translateY(-120px) scale(0.82);
+    opacity: 0;
+    filter: drop-shadow(0 0px 0px rgba(0,0,0,0));
+  }
+  55% {
+    transform: perspective(1400px) rotateX(4deg) rotateZ(1deg) translateY(12px) scale(1.02);
+    opacity: 1;
+    filter: drop-shadow(0 40px 30px rgba(0,0,0,0.18));
+  }
+  75% {
+    transform: perspective(1400px) rotateX(-2deg) rotateZ(-0.5deg) translateY(-5px) scale(0.99);
+    filter: drop-shadow(0 10px 8px rgba(0,0,0,0.10));
+  }
+  90% {
+    transform: perspective(1400px) rotateX(1deg) rotateZ(0.2deg) translateY(2px) scale(1.003);
+  }
+  100% {
+    transform: perspective(1400px) rotateX(0deg) rotateZ(0deg) translateY(0) scale(1);
+    opacity: 1;
+    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.06));
+  }
+}
+
+/* ── Override body lock imposé par index.css ───── */
+body:has(.pp-root) {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ── Scrollbar vintage (mobile uniquement) ─────── */
+@media (max-width: 600px) {
+  html:has(.pp-root)::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  html:has(.pp-root)::-webkit-scrollbar-track {
+    background: #f2ede3;
+  }
+
+  html:has(.pp-root)::-webkit-scrollbar-thumb {
+    background: #5a3e1b;
+    border-radius: 0;
+  }
+
+  html:has(.pp-root)::-webkit-scrollbar-thumb:hover {
+    background: #1a1208;
+  }
+
+  html:has(.pp-root) {
+    scrollbar-color: #5a3e1b #f2ede3;
+    scrollbar-width: thin;
+  }
+}
+
+/* ── Root ──────────────────────────────────────── */
+.pp-root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #f2ede3;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(0,0,0,0.04) 28px);
+  color: #1a1208;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  animation: paper-fall 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: center top;
+  will-change: transform, opacity;
+}
+
+/* ── Header ────────────────────────────────────── */
+.pp-header {
+  border-bottom: 4px double #1a1208;
+  padding: 2.5rem 4rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 2rem;
+}
+
+.pp-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.pp-name span {
+  display: block;
+  font-weight: 400;
+  font-size: 0.42em;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+  color: #5a3e1b;
+}
+
+.pp-header-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pp-header-links a {
+  color: #1a1208;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+.pp-header-links a:hover { color: #8b4513; }
+
+/* ── Nav ───────────────────────────────────────── */
+.pp-nav {
+  display: flex;
+  border-bottom: 2px solid #1a1208;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.pp-nav-item {
+  padding: 0.7rem 2rem;
+  border-right: 1px solid #1a1208;
+  cursor: pointer;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+  color: #1a1208;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.15s;
+}
+.pp-nav-item:hover,
+.pp-nav-item.active {
+  background: #1a1208;
+  color: #f2ede3;
+}
+
+/* ── Main layout ───────────────────────────────── */
+.pp-body {
+  display: grid;
+  grid-template-columns: 1fr 2.4fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+.pp-sidebar {
+  border-right: 2px solid #1a1208;
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #5a3e1b #f2ede3;
+}
+.pp-sidebar::-webkit-scrollbar { width: 6px; }
+.pp-sidebar::-webkit-scrollbar-track { background: #f2ede3; }
+.pp-sidebar::-webkit-scrollbar-thumb { background: #5a3e1b; border-radius: 0; }
+.pp-sidebar::-webkit-scrollbar-thumb:hover { background: #1a1208; }
+
+.pp-content {
+  padding: 2rem 3rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #5a3e1b #f2ede3;
+}
+.pp-content::-webkit-scrollbar { width: 6px; }
+.pp-content::-webkit-scrollbar-track { background: #f2ede3; }
+.pp-content::-webkit-scrollbar-thumb { background: #5a3e1b; border-radius: 0; }
+.pp-content::-webkit-scrollbar-thumb:hover { background: #1a1208; }
+
+/* ── Section titles ────────────────────────────── */
+.pp-section-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #1a1208;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ── About ─────────────────────────────────────── */
+.pp-about-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.8;
+  color: #1a1208;
+}
+
+.pp-about-text.pp-mt {
+  margin-top: 1rem;
+}
+
+.pp-drop-cap::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.4em;
+  font-weight: 900;
+  float: left;
+  line-height: 0.75;
+  margin-right: 0.08em;
+  margin-top: 0.05em;
+}
+
+/* ── Skills ────────────────────────────────────── */
+.pp-skill-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.pp-skill-name {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.pp-skill-bar-bg {
+  flex: 1;
+  height: 6px;
+  border: 1px solid #1a1208;
+  background: transparent;
+}
+
+.pp-skill-bar-fill {
+  height: 100%;
+  background: #1a1208;
+}
+
+/* ── Languages ─────────────────────────────────── */
+.pp-lang-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+}
+
+.pp-lang-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.pp-lang-dot {
+  width: 7px;
+  height: 7px;
+  border: 1px solid #1a1208;
+  border-radius: 50%;
+}
+
+.pp-lang-dot.filled { background: #1a1208; }
+
+/* ── Project card ──────────────────────────────── */
+.pp-project {
+  border: 2px solid #1a1208;
+  padding: 1.8rem 2rem;
+  position: relative;
+}
+
+.pp-project-tag {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: #1a1208;
+  color: #f2ede3;
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.pp-project-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.pp-project-sub {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: #5a3e1b;
+  margin-bottom: 1.2rem;
+}
+
+.pp-project-desc {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.8;
+  color: #1a1208;
+}
+
+.pp-project-desc--mt {
+  margin-top: 0.8rem;
+}
+
+.pp-project-corner {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.2rem;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: #5a3e1b;
+  text-transform: uppercase;
+}
+
+/* ── Contact ───────────────────────────────────── */
+.pp-contact-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed rgba(26,18,8,0.3);
+  padding-bottom: 1rem;
+}
+
+.pp-contact-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  width: 110px;
+  flex-shrink: 0;
+  color: #5a3e1b;
+}
+
+.pp-contact-value {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1a1208;
+}
+
+.pp-contact-value a {
+  color: #1a1208;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+.pp-contact-value a:hover { color: #8b4513; }
+
+/* ── Hobbies ───────────────────────────────────── */
+.pp-hobbies {
+  list-style: none;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.78rem;
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+}
+
+/* ── Photo ─────────────────────────────────────── */
+.pp-photo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pp-photo-wrap img {
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border: 2px solid #1a1208;
+  filter: grayscale(20%) sepia(15%) contrast(1.05);
+  box-shadow: 4px 4px 0 #1a1208;
+}
+
+.pp-photo-placeholder {
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 3 / 4;
+  border: 2px dashed #1a1208;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26,18,8,0.03);
+}
+
+.pp-photo-hint {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: #5a3e1b;
+  text-transform: uppercase;
+}
+
+/* ── Education (sidebar) ───────────────────────── */
+.pp-edu-item {
+  margin-bottom: 1.2rem;
+}
+
+.pp-edu-school {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.pp-edu-detail {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: #5a3e1b;
+  margin-top: 0.2rem;
+  line-height: 1.5;
+}
+
+/* ── Back button ───────────────────────────────── */
+.pp-back {
+  display: inline-block;
+  margin: 0.6rem 2rem;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(26,18,8,0.35);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+  padding-bottom: 1px;
+}
+.pp-back:hover { color: #5a3e1b; }
+
+/* ── Footer ────────────────────────────────────── */
+.pp-footer {
+  border-top: 4px double #1a1208;
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #5a3e1b;
+}
+
+/* ── Responsive · tablette ─────────────────────── */
+@media (max-width: 900px) {
+  .pp-header {
+    padding: 1.8rem 2rem 1.4rem;
+    gap: 1rem;
+  }
+
+  .pp-back {
+    margin: 1rem 2rem;
+  }
+
+  .pp-nav-item {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+
+  .pp-body {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .pp-sidebar {
+    padding: 1.8rem 1.2rem;
+    gap: 1.8rem;
+  }
+
+  .pp-content {
+    padding: 1.8rem 1.8rem;
+  }
+
+  .pp-footer {
+    padding: 1rem 2rem;
+  }
+}
+
+/* ── Responsive · mobile ───────────────────────── */
+@media (max-width: 600px) {
+  body:has(.pp-root) {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+  }
+
+  .pp-root {
+    height: auto;
+    overflow: visible;
+  }
+
+  .pp-body {
+    overflow: visible;
+  }
+
+  .pp-sidebar,
+  .pp-content {
+    overflow: visible;
+  }
+
+  .pp-header {
+    padding: 1.2rem 1.2rem 1rem;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .pp-header-links {
+    justify-content: flex-start;
+    gap: 1.2rem;
+  }
+
+  .pp-back {
+    margin: 0.8rem 1.2rem;
+    font-size: 0.7rem;
+  }
+
+  .pp-nav {
+    flex-wrap: wrap;
+    border-bottom: 2px solid #1a1208;
+  }
+
+  .pp-nav-item {
+    padding: 0.55rem 0.9rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  /* sidebar passe au dessus du contenu */
+  .pp-body {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+
+  .pp-sidebar {
+    border-right: none;
+    border-bottom: 2px solid #1a1208;
+    padding: 1.2rem 1.2rem;
+    gap: 1.4rem;
+    /* photo + infos côte à côte sur mobile */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .pp-photo-wrap {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    align-items: flex-start;
+  }
+
+  .pp-photo-wrap img,
+  .pp-photo-placeholder {
+    max-width: 110px;
+  }
+
+  .pp-sidebar > div {
+    grid-column: 2;
+  }
+
+  .pp-content {
+    padding: 1.2rem 1.2rem;
+  }
+
+  .pp-project {
+    padding: 1.2rem 1rem;
+  }
+
+  .pp-project-corner {
+    position: static;
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .pp-contact-label {
+    width: 90px;
+    font-size: 0.62rem;
+  }
+
+  .pp-contact-value {
+    font-size: 0.85rem;
+  }
+
+  .pp-footer {
+    padding: 0.8rem 1.2rem;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-align: center;
+  }
+
+  .pp-drop-cap::first-letter {
+    font-size: 2.6em;
+  }
+}
