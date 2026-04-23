@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaFileAlt, FaHome } from 'react-icons/fa'
 import { playHover, playClick } from '../utils/sounds'
 import profilImg from '../assets/profil.jpg'
 import './PortfolioPage.css'
@@ -57,6 +57,7 @@ export function PortfolioPage() {
           </h1>
         </div>
         <div className="pp-header-links">
+          <a href="https://spidermiriki.github.io/Homepage/" target="_blank" rel="noopener noreferrer" title="Homepage"><FaHome size={20} /></a>
           <a href="https://github.com/spidermiriki" target="_blank" rel="noopener noreferrer" title="GitHub"><FaGithub size={22} /></a>
           <a href="https://www.linkedin.com/in/derouck-homero" target="_blank" rel="noopener noreferrer" title="LinkedIn"><FaLinkedin size={22} /></a>
           <a href="https://spidermiriki.github.io/CV/" target="_blank" rel="noopener noreferrer" title="Curriculum Vitæ"><FaFileAlt size={20} /></a>
