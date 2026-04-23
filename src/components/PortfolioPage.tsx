@@ -207,7 +207,9 @@ export function PortfolioPage() {
               </div>
               <div className="pp-contact-row">
                 <span className="pp-contact-label">Téléphone</span>
-                <span className="pp-contact-value">+32 493 93 25 97</span>
+                <span className="pp-contact-value">
+                  <a href="tel:+32493932597">+32 493 93 25 97</a>
+                </span>
               </div>
               <div className="pp-contact-row">
                 <span className="pp-contact-label">GitHub</span>
