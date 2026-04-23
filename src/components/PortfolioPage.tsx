@@ -26,7 +26,7 @@ type Section = 'about' | 'skills' | 'project' | 'contact'
 const NAV_LABELS: Record<Section, string> = {
   about:   'À propos',
   skills:  'Compétences',
-  project: 'Projet',
+  project: 'Projets',
   contact: 'Contact',
 }
 
@@ -162,7 +162,7 @@ export function PortfolioPage() {
 
           {active === 'project' && (
             <section>
-              <div className="pp-section-title">Projet</div>
+              <div className="pp-section-title">Projets</div>
               <div className="pp-project">
                 <span className="pp-project-tag">ETH Oxford · 2025 &amp; 2026</span>
                 <h2 className="pp-project-title">Système de transaction crypto</h2>
@@ -174,6 +174,24 @@ export function PortfolioPage() {
                   Projet réalisé dans le cadre d'un hackathon international regroupant des étudiants de plusieurs universités européennes.
                 </p>
                 <span className="pp-project-corner">Oxford University</span>
+              </div>
+
+              <div className="pp-project pp-project--mt">
+                <span className="pp-project-tag">Personnel · 2025</span>
+                <h2 className="pp-project-title">Melo's Studio</h2>
+                <p className="pp-project-sub">Letterboxd API · React · Cinéma · Reviews</p>
+                <p className="pp-project-desc">
+                  Application web affichant mes critiques et notes personnelles de films via l'API Letterboxd. Interface pensée autour de l'esthétique cinéphile, avec navigation par film, note et date.
+                </p>
+                <a
+                  href="https://spidermiriki.github.io/Melo-s-Studio/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pp-project-link"
+                >
+                  Voir le projet →
+                </a>
+                <span className="pp-project-corner">spidermiriki.github.io</span>
               </div>
             </section>
           )}

@@ -328,6 +328,24 @@ body:has(.pp-root) {
   text-transform: uppercase;
 }
 
+.pp-project--mt {
+  margin-top: 1.5rem;
+}
+
+.pp-project-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a1208;
+  text-decoration: none;
+  border-bottom: 1px solid #1a1208;
+  transition: color 0.15s, border-color 0.15s;
+}
+.pp-project-link:hover { color: #8b4513; border-color: #8b4513; }
+
 /* ── Contact ───────────────────────────────────── */
 .pp-contact-row {
   display: flex;
