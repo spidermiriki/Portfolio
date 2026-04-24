@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { FaGithub, FaLinkedin, FaFileAlt, FaHome } from 'react-icons/fa'
 import { playHover, playClick } from '../utils/sounds'
 import profilImg from '../assets/profil.jpg'
@@ -32,6 +32,31 @@ const NAV_LABELS: Record<Section, string> = {
 
 export function PortfolioPage() {
   const [active, setActive] = useState<Section>('about')
+  const contentRef = useRef<HTMLElement>(null)
+
+  function handleNav(s: Section) {
+    setActive(s)
+    if (window.innerWidth <= 600) {
+      setTimeout(() => {
+        const el = contentRef.current
+        if (!el) return
+        const start = window.scrollY
+        const target = el.getBoundingClientRect().top + window.scrollY - 8
+        const distance = target - start
+        const duration = 520
+        let startTime: number | null = null
+        function step(now: number) {
+          if (!startTime) startTime = now
+          const elapsed = now - startTime
+          const t = Math.min(elapsed / duration, 1)
+          const ease = 1 - Math.pow(1 - t, 4)
+          window.scrollTo(0, start + distance * ease)
+          if (t < 1) requestAnimationFrame(step)
+        }
+        requestAnimationFrame(step)
+      }, 0)
+    }
+  }
 
   function handleRootOver(e: React.MouseEvent) {
     const t = e.target as HTMLElement
@@ -71,7 +96,7 @@ export function PortfolioPage() {
             type="button"
             key={s}
             className={`pp-nav-item ${active === s ? 'active' : ''}`}
-            onClick={() => setActive(s)}
+            onClick={() => handleNav(s)}
           >
             {NAV_LABELS[s]}
           </button>
@@ -127,7 +152,7 @@ export function PortfolioPage() {
         </aside>
 
         {/* ── Content ── */}
-        <main className="pp-content">
+        <main className="pp-content" ref={contentRef}>
 
           {active === 'about' && (
             <section>
