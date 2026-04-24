@@ -447,23 +447,7 @@ body:has(.pp-root) {
   line-height: 1.5;
 }
 
-/* ── Back button ───────────────────────────────── */
-.pp-back {
-  display: inline-block;
-  margin: 0.6rem 2rem;
-  font-family: 'Courier Prime', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(26,18,8,0.35);
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: color 0.2s;
-  padding-bottom: 1px;
-}
-.pp-back:hover { color: #5a3e1b; }
+
 
 /* ── Footer ────────────────────────────────────── */
 .pp-footer {

@@ -46,7 +46,7 @@ export function PortfolioPage() {
   return (
     <div className="pp-root" onMouseOver={handleRootOver} onClick={handleRootClick}>
 
-      <button type="button" className="pp-back" onClick={() => window.history.back()}>← Retour</button>
+
 
       {/* ── Header ── */}
       <header className="pp-header">
