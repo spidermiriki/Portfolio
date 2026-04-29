@@ -232,6 +232,24 @@ export function PortfolioPage() {
 
               <div className="pp-project pp-project--mt">
                 <span className="pp-project-tag">Personnel · 2025</span>
+                <h2 className="pp-project-title">Homepage</h2>
+                <p className="pp-project-sub">React 19 · TypeScript · Vite · Effets interactifs · Cyberpunk</p>
+                <p className="pp-project-desc">
+                  Landing page personnelle à l'esthétique cyberpunk/rétro, construite avec React 19 et TypeScript. Intègre une séquence d'intro animée, une traînée de particules suivant la souris, un fond étoilé, un hook custom de parallaxe et une vue responsive dédiée au mobile.
+                </p>
+                <a
+                  href="https://spidermiriki.github.io/Homepage/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pp-project-link"
+                >
+                  Voir le projet →
+                </a>
+                <span className="pp-project-corner">spidermiriki.github.io</span>
+              </div>
+
+              <div className="pp-project pp-project--mt">
+                <span className="pp-project-tag">Personnel · 2025</span>
                 <h2 className="pp-project-title">Melo's Studio</h2>
                 <p className="pp-project-sub">Letterboxd API · React · Cinéma · Reviews</p>
                 <p className="pp-project-desc">
