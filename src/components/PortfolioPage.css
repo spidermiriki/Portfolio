@@ -276,7 +276,22 @@ body:has(.pp-root) {
 
 .pp-skill-bar-fill {
   height: 100%;
+  width: var(--skill-width);
   background: #1a1208;
+}
+
+.pp-skill-category {
+  margin-bottom: 1.2rem;
+}
+
+.pp-skill-category-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5a3e1b;
+  margin-bottom: 0.4rem;
+  opacity: 0.7;
 }
 
 /* ── Languages ─────────────────────────────────── */

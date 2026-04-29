@@ -4,15 +4,31 @@ import { playHover, playClick } from '../utils/sounds'
 import profilImg from '../assets/profil.jpg'
 import './PortfolioPage.css'
 
-const SKILLS = [
-  { name: 'HTML',       level: 5 },
-  { name: 'CSS',        level: 5 },
-  { name: 'SQL',        level: 5 },
-  { name: 'PHP',        level: 5 },
-  { name: 'Python',     level: 4 },
-  { name: 'JavaScript', level: 4 },
-  { name: 'Java',       level: 4 },
-]
+const SKILLS: Record<string, { name: string; level: number }[]> = {
+  'Langages': [
+    { name: 'PHP',        level: 5 },
+    { name: 'Python',     level: 4 },
+    { name: 'JavaScript', level: 4 },
+    { name: 'Java',       level: 4 },
+    { name: 'Solidity',   level: 2 },
+    { name: 'C',          level: 1 },
+  ],
+  'Frontend': [
+    { name: 'HTML',  level: 5 },
+    { name: 'CSS',   level: 5 },
+    { name: 'React', level: 4 },
+  ],
+  'Backend': [
+    { name: 'SQL', level: 5 },
+  ],
+  'Outils': [
+    { name: 'GitHub',  level: 4 },
+    { name: 'Arduino', level: 1 },
+  ],
+  'Créatif': [
+    { name: 'Montage vidéo', level: 4 },
+  ],
+}
 
 const LANGS = [
   { name: 'Français',    level: 5 },
@@ -179,15 +195,20 @@ export function PortfolioPage() {
           {active === 'skills' && (
             <section>
               <div className="pp-section-title">Compétences techniques</div>
-              {SKILLS.map(s => (
-                <div key={s.name} className="pp-skill-row">
-                  <span className="pp-skill-name">{s.name}</span>
-                  <div className="pp-skill-bar-bg">
-                    <div
-                      className="pp-skill-bar-fill"
-                      style={{ width: `${s.level / 5 * 100}%` }}
-                    />
-                  </div>
+              {Object.entries(SKILLS).map(([category, items]) => (
+                <div key={category} className="pp-skill-category">
+                  <div className="pp-skill-category-label">{category}</div>
+                  {items.map(s => (
+                    <div key={s.name} className="pp-skill-row">
+                      <span className="pp-skill-name">{s.name}</span>
+                      <div className="pp-skill-bar-bg">
+                        <div
+                          className="pp-skill-bar-fill"
+                          style={{ '--skill-width': `${s.level / 5 * 100}%` } as React.CSSProperties}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               ))}
             </section>
