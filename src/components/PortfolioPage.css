@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:wght@400;700&family=Caveat:wght@600&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -119,6 +119,38 @@ body:has(.pp-root) {
   transition: color 0.15s;
 }
 .pp-header-links a:hover { color: #8b4513; }
+
+.pp-cv-link {
+  position: relative;
+  padding-top: 2rem;
+  margin-top: -2rem;
+  display: flex !important;
+  align-items: flex-end;
+}
+
+.pp-cv-label {
+  position: absolute;
+  top: 0;
+  left: -0.6rem;
+  transform: rotate(-10deg);
+  font-family: 'Caveat', cursive;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #5a3e1b;
+  line-height: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.pp-cv-arrow {
+  position: absolute;
+  top: 0.70rem;
+  left: 0.1rem;
+  pointer-events: none;
+  overflow: visible;
+  transform: scaleY(0.72);
+  transform-origin: top left;
+}
 
 /* ── Nav ───────────────────────────────────────── */
 .pp-nav {
@@ -528,6 +560,29 @@ body:has(.pp-root) {
   .pp-header-links {
     justify-content: flex-start;
     gap: 1.2rem;
+    padding-top: 2rem;
+    overflow: visible;
+  }
+
+  .pp-header {
+    overflow: visible;
+  }
+
+  .pp-cv-link {
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .pp-cv-label {
+    top: -1.8rem;
+    left: -0.4rem;
+    font-size: 0.85rem;
+  }
+
+  .pp-cv-arrow {
+    top: -1.3rem;
+    left: 0.15rem;
+    transform: scaleY(0.65);
   }
 
   .pp-back {

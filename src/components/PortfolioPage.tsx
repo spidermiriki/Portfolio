@@ -82,10 +82,17 @@ export function PortfolioPage() {
           </h1>
         </div>
         <div className="pp-header-links">
-          <a href="https://spidermiriki.github.io/Homepage/" target="_blank" rel="noopener noreferrer" title="Homepage"><FaHome size={20} /></a>
-          <a href="https://github.com/spidermiriki" target="_blank" rel="noopener noreferrer" title="GitHub"><FaGithub size={22} /></a>
-          <a href="https://www.linkedin.com/in/derouck-homero" target="_blank" rel="noopener noreferrer" title="LinkedIn"><FaLinkedin size={22} /></a>
-          <a href="https://spidermiriki.github.io/CV/" target="_blank" rel="noopener noreferrer" title="Curriculum Vitæ"><FaFileAlt size={20} /></a>
+          <a href="https://spidermiriki.github.io/Homepage/" target="_blank" rel="noopener noreferrer" title="Homepage"><FaHome size={26} /></a>
+          <a href="https://github.com/spidermiriki" target="_blank" rel="noopener noreferrer" title="GitHub"><FaGithub size={26} /></a>
+          <a href="https://www.linkedin.com/in/derouck-homero" target="_blank" rel="noopener noreferrer" title="LinkedIn"><FaLinkedin size={26} /></a>
+          <a href="https://spidermiriki.github.io/CV/" target="_blank" rel="noopener noreferrer" title="Curriculum Vitæ" className="pp-cv-link">
+            <span className="pp-cv-label">cv</span>
+            <svg className="pp-cv-arrow" width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 2,1 C 0,8 20,12 13,25" stroke="#5a3e1b" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M 9,21 L 13,25 L 17,21" stroke="#5a3e1b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <FaFileAlt size={26} />
+          </a>
         </div>
       </header>
 
