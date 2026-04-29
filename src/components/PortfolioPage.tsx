@@ -10,8 +10,8 @@ const SKILLS = [
   { name: 'SQL',        level: 5 },
   { name: 'PHP',        level: 5 },
   { name: 'Python',     level: 4 },
-  { name: 'JavaScript', level: 3 },
-  { name: 'Java',       level: 2 },
+  { name: 'JavaScript', level: 4 },
+  { name: 'Java',       level: 4 },
 ]
 
 const LANGS = [
