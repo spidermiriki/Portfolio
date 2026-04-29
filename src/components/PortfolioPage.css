@@ -379,9 +379,14 @@ body:has(.pp-root) {
   margin-top: 1.5rem;
 }
 
+.pp-project-links {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
 .pp-project-link {
   display: inline-block;
-  margin-top: 1rem;
   font-family: 'Courier Prime', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.12em;

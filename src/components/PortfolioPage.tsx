@@ -227,6 +227,9 @@ export function PortfolioPage() {
                 <p className="pp-project-desc pp-project-desc--mt">
                   Projet réalisé dans le cadre d'un hackathon international regroupant des étudiants de plusieurs universités européennes.
                 </p>
+                <div className="pp-project-links">
+                  <a href="https://github.com/hugodvrs4/Lava-Payments" target="_blank" rel="noopener noreferrer" className="pp-project-link">GitHub →</a>
+                </div>
                 <span className="pp-project-corner">Oxford University</span>
               </div>
 
@@ -237,14 +240,10 @@ export function PortfolioPage() {
                 <p className="pp-project-desc">
                   Landing page personnelle à l'esthétique cyberpunk/rétro, construite avec React 19 et TypeScript. Intègre une séquence d'intro animée, une traînée de particules suivant la souris, un fond étoilé, un hook custom de parallaxe et une vue responsive dédiée au mobile.
                 </p>
-                <a
-                  href="https://spidermiriki.github.io/Homepage/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pp-project-link"
-                >
-                  Voir le projet →
-                </a>
+                <div className="pp-project-links">
+                  <a href="https://spidermiriki.github.io/Homepage/" target="_blank" rel="noopener noreferrer" className="pp-project-link">Voir le projet →</a>
+                  <a href="https://github.com/spidermiriki/Homepage" target="_blank" rel="noopener noreferrer" className="pp-project-link">GitHub →</a>
+                </div>
                 <span className="pp-project-corner">spidermiriki.github.io</span>
               </div>
 
@@ -255,14 +254,10 @@ export function PortfolioPage() {
                 <p className="pp-project-desc">
                   Application web affichant mes critiques et notes personnelles de films via l'API Letterboxd. Interface pensée autour de l'esthétique cinéphile, avec navigation par film, note et date.
                 </p>
-                <a
-                  href="https://spidermiriki.github.io/Melo-s-Studio/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pp-project-link"
-                >
-                  Voir le projet →
-                </a>
+                <div className="pp-project-links">
+                  <a href="https://spidermiriki.github.io/Melo-s-Studio/" target="_blank" rel="noopener noreferrer" className="pp-project-link">Voir le projet →</a>
+                  <a href="https://github.com/spidermiriki/Melo-s-Studio" target="_blank" rel="noopener noreferrer" className="pp-project-link">GitHub →</a>
+                </div>
                 <span className="pp-project-corner">spidermiriki.github.io</span>
               </div>
             </section>
