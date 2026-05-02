@@ -260,6 +260,19 @@ export function PortfolioPage() {
                 </div>
                 <span className="pp-project-corner">spidermiriki.github.io</span>
               </div>
+              <div className="pp-project pp-project--mt">
+                <span className="pp-project-tag">HEH DST · Cours React · 2025</span>
+                <h2 className="pp-project-title">VideoConf Hub</h2>
+                <p className="pp-project-sub">React 19 · Firebase · YouTube Data API v3 · GitHub Actions</p>
+                <p className="pp-project-desc">
+                  Application web de découverte et gestion de contenus YouTube. Authentification Google via Firebase Auth, navigation de chaînes via l'API YouTube Data v3, et liste "Watch Later" persistée par utilisateur dans Firestore. SPA entièrement côté client déployée en CI/CD via GitHub Actions.
+                </p>
+                <div className="pp-project-links">
+                  <a href="https://spidermiriki.github.io/VideoConf-Hub/" target="_blank" rel="noopener noreferrer" className="pp-project-link">Voir le projet →</a>
+                  <a href="https://github.com/spidermiriki/VideoConf-Hub" target="_blank" rel="noopener noreferrer" className="pp-project-link">GitHub →</a>
+                </div>
+                <span className="pp-project-corner">HEH · Mons</span>
+              </div>
             </section>
           )}
 
