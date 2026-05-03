@@ -227,7 +227,8 @@ export function PortfolioPage() {
                 <p className="pp-project-desc pp-project-desc--mt">
                   Projet réalisé dans le cadre d'un hackathon international regroupant des étudiants de plusieurs universités européennes.
                 </p>
-                <div className="pp-project-links">
+                <div className="pp-project-links"> 
+                  <a href="https://hugodvrs4.github.io/Lava-Payments" target="_blank" rel="noopener noreferrer" className="pp-project-link">Voir le projet →</a> 
                   <a href="https://github.com/hugodvrs4/Lava-Payments" target="_blank" rel="noopener noreferrer" className="pp-project-link">GitHub →</a>
                 </div>
                 <span className="pp-project-corner">Oxford University</span>
