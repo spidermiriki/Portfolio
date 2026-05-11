@@ -183,6 +183,132 @@ body:has(.pp-root) {
   color: #f2ede3;
 }
 
+/* ── Language selector ─────────────────────────── */
+.pp-lang-selector {
+  position: absolute;
+  top: 0.65rem;
+  right: 1rem;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+}
+
+.pp-lang-current {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.15rem 0.55rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #5a3e1b;
+  letter-spacing: 0.04em;
+  min-width: 54px;
+  justify-content: center;
+}
+
+.pp-lang-border-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.pp-lang-border-path {
+  stroke: #5a3e1b;
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pp-lang-caret {
+  width: 9px;
+  height: 6px;
+  color: #5a3e1b;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.pp-lang-current.open .pp-lang-caret {
+  transform: rotate(180deg);
+}
+
+.pp-lang-current.open .pp-lang-border-path {
+  stroke: #1a1208;
+}
+
+.pp-lang-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Dropdown ── */
+.pp-lang-dropdown {
+  position: absolute;
+  top: calc(100% + 2px);
+  right: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 200;
+}
+
+.pp-lang-option {
+  background: #f2ede3;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.55rem;
+  min-width: 54px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #5a3e1b;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  animation: lang-appear 0.22s ease both;
+}
+
+.pp-lang-option:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.pp-lang-option:hover .pp-lang-border-path,
+.pp-lang-option:hover .pp-lang-caret {
+  stroke: #1a1208;
+}
+
+.pp-lang-option:hover .pp-lang-text {
+  color: #1a1208;
+}
+
+/* SVG border draw-in animation */
+.pp-lang-border-animated {
+  stroke-dasharray: 175;
+  stroke-dashoffset: 175;
+  animation: draw-border 0.45s ease forwards;
+}
+
+@keyframes draw-border {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes lang-appear {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* ── Main layout ───────────────────────────────── */
 .pp-body {
   display: grid;
@@ -276,9 +402,13 @@ body:has(.pp-root) {
 
 .pp-skill-bar-fill {
   height: 100%;
-  width: var(--skill-width);
   background: #1a1208;
 }
+.pp-skill-bar-fill[data-level="1"] { width: 20%; }
+.pp-skill-bar-fill[data-level="2"] { width: 40%; }
+.pp-skill-bar-fill[data-level="3"] { width: 60%; }
+.pp-skill-bar-fill[data-level="4"] { width: 80%; }
+.pp-skill-bar-fill[data-level="5"] { width: 100%; }
 
 .pp-skill-category {
   margin-bottom: 1.2rem;
@@ -621,6 +751,18 @@ body:has(.pp-root) {
     letter-spacing: 0.08em;
     flex: 1 1 auto;
     text-align: center;
+  }
+
+  .pp-lang-selector {
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .pp-lang-dropdown {
+    top: auto;
+    bottom: calc(100% + 2px);
+    right: 0;
   }
 
   /* sidebar passe au dessus du contenu */
