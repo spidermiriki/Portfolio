@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { FaGithub, FaLinkedin, FaFileAlt, FaHome } from 'react-icons/fa'
+import {
+  SiPhp, SiPython, SiJavascript, SiTypescript, SiSolidity,
+  SiHtml5, SiCss, SiReact,
+  SiNodedotjs, SiFirebase,
+  SiGithub, SiArduino, SiGodotengine,
+} from 'react-icons/si'
+import type { IconType } from 'react-icons'
 import { playHover, playClick } from '../utils/sounds'
 import profilImg from '../assets/profil.jpg'
 import './PortfolioPage.css'
@@ -9,33 +16,31 @@ type Section = 'about' | 'skills' | 'project' | 'contact'
 
 const SECTIONS: Section[] = ['about', 'skills', 'project', 'contact']
 
-const SKILLS: Record<string, { name: string; level: number }[]> = {
-  Langages: [
-    { name: 'PHP',        level: 5 },
-    { name: 'Python',     level: 4 },
-    { name: 'JavaScript', level: 4 },
-    { name: 'Java',       level: 4 },
-    { name: 'Solidity',   level: 2 },
-    { name: 'C',          level: 1 },
-  ],
-  Frontend: [
-    { name: 'HTML',  level: 5 },
-    { name: 'CSS',   level: 5 },
-    { name: 'React', level: 4 },
-  ],
-  Backend: [
-    { name: 'SQL', level: 5 },
-  ],
-  Outils: [
-    { name: 'GitHub',  level: 4 },
-    { name: 'Arduino', level: 1 },
-  ],
-  Créatif: [
-    { name: 'Montage vidéo', level: 4 },
-  ],
+const SKILLS: Record<string, string[]> = {
+  Langages: ['PHP', 'Python', 'JavaScript', 'TypeScript', 'Java', 'Solidity', 'C', 'GDScript'],
+  Frontend: ['HTML', 'CSS', 'React'],
+  Backend:  ['SQL', 'Node.js', 'Firebase'],
+  Outils:   ['GitHub', 'Godot', 'Arduino'],
+  Créatif:  ['Montage vidéo'],
 }
 
-const LANG_LEVELS = [5, 5, 5, 2]
+const SKILL_ICONS: Record<string, IconType> = {
+  PHP:        SiPhp,
+  Python:     SiPython,
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  Solidity:   SiSolidity,
+  HTML:       SiHtml5,
+  CSS:        SiCss,
+  React:      SiReact,
+  'Node.js':  SiNodedotjs,
+  Firebase:   SiFirebase,
+  GitHub:     SiGithub,
+  Godot:      SiGodotengine,
+  Arduino:    SiArduino,
+}
+
+const LANG_LEVELS = ['native', 'fluent', 'native', 'basic'] as const
 
 type Translation = {
   subtitle: string
@@ -48,6 +53,7 @@ type Translation = {
     atheneeDetail: [string, string]
     hobbiesList: string[]
     langNames: string[]
+    langLevelLabels: Record<string, string>
     photoAlt: string
   }
   about: { title: string; p1: string; p2: string; p3: string }
@@ -59,6 +65,8 @@ type Translation = {
     homepage:  { tag: string; title: string; sub: string; desc: string; corner: string }
     melo:      { tag: string; title: string; sub: string; desc: string; corner: string }
     videoconf: { tag: string; title: string; sub: string; desc: string; corner: string }
+    quiz:      { tag: string; title: string; sub: string; desc: string; corner: string }
+    marine:    { tag: string; title: string; sub: string; desc: string; corner: string }
   }
   contact: { title: string; phone: string; location: string; locationValue: string }
 }
@@ -75,6 +83,7 @@ const TRANSLATIONS: Record<Lang, Translation> = {
       atheneeDetail:['CESS — Latin, Math, Sciences', 'La Louvière · 2016 — 2022'],
       hobbiesList:  ['Skateboard', 'Jeux vidéo', 'Cinéma', 'Montage vidéo'],
       langNames:    ['Français', 'Anglais', 'Espagnol', 'Néerlandais'],
+      langLevelLabels: { native: 'Langue natale', fluent: 'Courant', basic: 'Notions' },
       photoAlt:     'Photo de profil',
     },
     about: {
@@ -115,6 +124,18 @@ const TRANSLATIONS: Record<Lang, Translation> = {
         desc: 'Application web de découverte et gestion de contenus YouTube. Authentification Google via Firebase Auth, navigation de chaînes via l\'API YouTube Data v3, et liste "Watch Later" persistée par utilisateur dans Firestore. SPA entièrement côté client déployée en CI/CD via GitHub Actions.',
         corner: 'HEH · Mons',
       },
+      quiz: {
+        tag: 'Personnel · 2025', title: 'Quiz',
+        sub: 'React 19 · Firebase Realtime DB · Vite · GitHub Pages',
+        desc: "Application de quiz en temps réel avec backend Firebase. Création de sessions partagées, questions gérées côté admin, et scores mis à jour en direct pour tous les joueurs via Firebase Realtime Database.",
+        corner: 'spidermiriki.github.io',
+      },
+      marine: {
+        tag: 'Personnel · 2025', title: 'Evolution Marine',
+        sub: 'Godot 4 · GDScript · Jeu 2D · Simulation',
+        desc: "Jeu de simulation d'évolution marine en 2D développé sous Godot 4. Incarnez des créatures marines et évoluez à travers un système d'espèces dynamique. Optimisé mobile, disponible en deux versions (Godot 4.6 et 4.7).",
+        corner: 'Godot Engine',
+      },
     },
     contact: { title: 'Contact', phone: 'Téléphone', location: 'Localisation', locationValue: 'Mons / La Louvière · Belgique' },
   },
@@ -130,6 +151,7 @@ const TRANSLATIONS: Record<Lang, Translation> = {
       atheneeDetail:['High School Diploma — Latin, Math, Sciences', 'La Louvière · 2016 — 2022'],
       hobbiesList:  ['Skateboarding', 'Video games', 'Cinema', 'Video editing'],
       langNames:    ['French', 'English', 'Spanish', 'Dutch'],
+      langLevelLabels: { native: 'Native', fluent: 'Fluent', basic: 'Basic' },
       photoAlt:     'Profile photo',
     },
     about: {
@@ -170,6 +192,18 @@ const TRANSLATIONS: Record<Lang, Translation> = {
         desc: 'A web app to browse and manage YouTube content. Sign in with Google via Firebase Auth, explore channels through the YouTube Data API v3, and save videos to a personal "Watch Later" list stored in Firestore. Fully client-side SPA, shipped via CI/CD with GitHub Actions.',
         corner: 'HEH · Mons',
       },
+      quiz: {
+        tag: 'Personal · 2025', title: 'Quiz',
+        sub: 'React 19 · Firebase Realtime DB · Vite · GitHub Pages',
+        desc: 'Real-time quiz app powered by Firebase. Players join shared sessions, admins manage questions, and scores update live for all participants via Firebase Realtime Database.',
+        corner: 'spidermiriki.github.io',
+      },
+      marine: {
+        tag: 'Personal · 2025', title: 'Evolution Marine',
+        sub: 'Godot 4 · GDScript · 2D Game · Simulation',
+        desc: 'A 2D marine evolution simulation game built in Godot 4. Play as sea creatures and evolve through a dynamic species system. Mobile-optimized, available in two versions (Godot 4.6 and 4.7).',
+        corner: 'Godot Engine',
+      },
     },
     contact: { title: 'Contact', phone: 'Phone', location: 'Location', locationValue: 'Mons / La Louvière · Belgium' },
   },
@@ -185,6 +219,7 @@ const TRANSLATIONS: Record<Lang, Translation> = {
       atheneeDetail:['Bachillerato — Latín, Matemáticas, Ciencias', 'La Louvière · 2016 — 2022'],
       hobbiesList:  ['Skateboard', 'Videojuegos', 'Cine', 'Edición de vídeo'],
       langNames:    ['Francés', 'Inglés', 'Español', 'Neerlandés'],
+      langLevelLabels: { native: 'Lengua materna', fluent: 'Fluido', basic: 'Nociones' },
       photoAlt:     'Foto de perfil',
     },
     about: {
@@ -224,6 +259,18 @@ const TRANSLATIONS: Record<Lang, Translation> = {
         sub: 'React 19 · Firebase · YouTube Data API v3 · GitHub Actions',
         desc: 'Aplicación web para explorar y gestionar contenidos de YouTube. Inicio de sesión con Google mediante Firebase Auth, navegación de canales con la API YouTube Data v3, y una lista "Ver más tarde" guardada por usuario en Firestore. SPA completamente en cliente, desplegada en CI/CD con GitHub Actions.',
         corner: 'HEH · Mons',
+      },
+      quiz: {
+        tag: 'Personal · 2025', title: 'Quiz',
+        sub: 'React 19 · Firebase Realtime DB · Vite · GitHub Pages',
+        desc: 'App de quiz en tiempo real con backend Firebase. Los jugadores se unen a sesiones compartidas, los administradores gestionan las preguntas y los marcadores se actualizan en vivo para todos via Firebase Realtime Database.',
+        corner: 'spidermiriki.github.io',
+      },
+      marine: {
+        tag: 'Personal · 2025', title: 'Evolution Marine',
+        sub: 'Godot 4 · GDScript · Juego 2D · Simulación',
+        desc: 'Un juego 2D de simulación de evolución marina desarrollado en Godot 4. Juega como criaturas marinas y evoluciona a través de un sistema dinámico de especies. Optimizado para móvil, disponible en dos versiones (Godot 4.6 y 4.7).',
+        corner: 'Godot Engine',
       },
     },
     contact: { title: 'Contacto', phone: 'Teléfono', location: 'Ubicación', locationValue: 'Mons / La Louvière · Bélgica' },
@@ -356,11 +403,7 @@ export function PortfolioPage() {
             {LANG_LEVELS.map((level, i) => (
               <div key={i} className="pp-lang-row">
                 <span>{t.sidebar.langNames[i]}</span>
-                <div className="pp-lang-dots">
-                  {Array.from({ length: 5 }, (_, j) => (
-                    <div key={j} className={`pp-lang-dot ${j < level ? 'filled' : ''}`} />
-                  ))}
-                </div>
+                <span className="pp-lang-level">{t.sidebar.langLevelLabels[level]}</span>
               </div>
             ))}
           </div>
@@ -393,16 +436,17 @@ export function PortfolioPage() {
                   <div className="pp-skill-category-label">
                     {t.skills.categories[category] ?? category}
                   </div>
-                  {items.map(s => (
-                    <div key={s.name} className="pp-skill-row">
-                      <span className="pp-skill-name">
-                        {s.name === 'Montage vidéo' ? t.skills.creativeSkill : s.name}
-                      </span>
-                      <div className="pp-skill-bar-bg">
-                        <div className="pp-skill-bar-fill" data-level={s.level} />
-                      </div>
-                    </div>
-                  ))}
+                  <div className="pp-skill-tags">
+                    {items.map(name => {
+                      const Icon = SKILL_ICONS[name]
+                      return (
+                        <span key={name} className="pp-skill-tag">
+                          {Icon && <Icon size={12} />}
+                          {name === 'Montage vidéo' ? t.skills.creativeSkill : name}
+                        </span>
+                      )
+                    })}
+                  </div>
                 </div>
               ))}
             </section>
@@ -459,6 +503,29 @@ export function PortfolioPage() {
                 </div>
                 <span className="pp-project-corner">{t.projects.videoconf.corner}</span>
               </div>
+
+              <div className="pp-project pp-project--mt">
+                <span className="pp-project-tag">{t.projects.quiz.tag}</span>
+                <h2 className="pp-project-title">{t.projects.quiz.title}</h2>
+                <p className="pp-project-sub">{t.projects.quiz.sub}</p>
+                <p className="pp-project-desc">{t.projects.quiz.desc}</p>
+                <div className="pp-project-links">
+                  <a href="https://spidermiriki.github.io/quiz/" target="_blank" rel="noopener noreferrer" className="pp-project-link">{t.projects.viewProject}</a>
+                  <a href="https://github.com/spidermiriki/quiz" target="_blank" rel="noopener noreferrer" className="pp-project-link">GitHub →</a>
+                </div>
+                <span className="pp-project-corner">{t.projects.quiz.corner}</span>
+              </div>
+
+              <div className="pp-project pp-project--mt">
+                <span className="pp-project-tag">{t.projects.marine.tag}</span>
+                <h2 className="pp-project-title">{t.projects.marine.title}</h2>
+                <p className="pp-project-sub">{t.projects.marine.sub}</p>
+                <p className="pp-project-desc">{t.projects.marine.desc}</p>
+                <div className="pp-project-links">
+                  <a href="https://github.com/spidermiriki/evolution-marine" target="_blank" rel="noopener noreferrer" className="pp-project-link">GitHub →</a>
+                </div>
+                <span className="pp-project-corner">{t.projects.marine.corner}</span>
+              </div>
             </section>
           )}
 
@@ -468,13 +535,13 @@ export function PortfolioPage() {
               <div className="pp-contact-row">
                 <span className="pp-contact-label">Email</span>
                 <span className="pp-contact-value">
-                  <a href="mailto:homeromiriki@gmail.com">homeromiriki@gmail.com</a>
+                  <a href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}>{import.meta.env.VITE_CONTACT_EMAIL}</a>
                 </span>
               </div>
               <div className="pp-contact-row">
                 <span className="pp-contact-label">{t.contact.phone}</span>
                 <span className="pp-contact-value">
-                  <a href="tel:+32493932597">+32 493 93 25 97</a>
+                  <a href={`tel:${import.meta.env.VITE_CONTACT_PHONE?.replace(/\s/g, '')}`}>{import.meta.env.VITE_CONTACT_PHONE}</a>
                 </span>
               </div>
               <div className="pp-contact-row">

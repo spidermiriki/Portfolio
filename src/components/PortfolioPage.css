@@ -378,38 +378,6 @@ body:has(.pp-root) {
 }
 
 /* ── Skills ────────────────────────────────────── */
-.pp-skill-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.7rem;
-}
-
-.pp-skill-name {
-  font-family: 'Courier Prime', monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  width: 90px;
-  flex-shrink: 0;
-}
-
-.pp-skill-bar-bg {
-  flex: 1;
-  height: 6px;
-  border: 1px solid #1a1208;
-  background: transparent;
-}
-
-.pp-skill-bar-fill {
-  height: 100%;
-  background: #1a1208;
-}
-.pp-skill-bar-fill[data-level="1"] { width: 20%; }
-.pp-skill-bar-fill[data-level="2"] { width: 40%; }
-.pp-skill-bar-fill[data-level="3"] { width: 60%; }
-.pp-skill-bar-fill[data-level="4"] { width: 80%; }
-.pp-skill-bar-fill[data-level="5"] { width: 100%; }
-
 .pp-skill-category {
   margin-bottom: 1.2rem;
 }
@@ -420,8 +388,27 @@ body:has(.pp-root) {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #5a3e1b;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.55rem;
   opacity: 0.7;
+}
+
+.pp-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pp-skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  border: 1px solid #1a1208;
+  padding: 0.15rem 0.6rem;
+  background: transparent;
+  color: #1a1208;
 }
 
 /* ── Languages ─────────────────────────────────── */
@@ -435,19 +422,13 @@ body:has(.pp-root) {
   letter-spacing: 0.05em;
 }
 
-.pp-lang-dots {
-  display: flex;
-  gap: 4px;
+.pp-lang-level {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  color: #5a3e1b;
+  font-style: italic;
 }
-
-.pp-lang-dot {
-  width: 7px;
-  height: 7px;
-  border: 1px solid #1a1208;
-  border-radius: 50%;
-}
-
-.pp-lang-dot.filled { background: #1a1208; }
 
 /* ── Project card ──────────────────────────────── */
 .pp-project {
