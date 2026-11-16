@@ -5,6 +5,13 @@ import {
   SiHtml5, SiCss, SiReact,
   SiNodedotjs, SiFirebase,
   SiGithub, SiArduino, SiGodotengine,
+  SiVite, SiExpo, SiReactquery,
+  SiSpringboot, SiFastapi, SiExpress, SiCloudinary, SiOpenid,
+  SiPostgresql, SiSqlalchemy,
+  SiJunit5, SiVitest, SiPytest,
+  SiDocker, SiGithubactions, SiGradle, SiRender,
+  SiGooglegemini, SiClaude,
+  SiPostman, SiSwagger, SiIntellijidea, SiTrello,
 } from 'react-icons/si'
 import type { IconType } from 'react-icons'
 import { playHover, playClick } from '../utils/sounds'
@@ -18,9 +25,13 @@ const SECTIONS: Section[] = ['about', 'skills', 'project', 'contact']
 
 const SKILLS: Record<string, string[]> = {
   Langages: ['PHP', 'Python', 'JavaScript', 'TypeScript', 'Java', 'Solidity', 'C', 'GDScript'],
-  Frontend: ['HTML', 'CSS', 'React'],
-  Backend:  ['SQL', 'Node.js', 'Firebase'],
-  Outils:   ['GitHub', 'Godot', 'Arduino'],
+  Frontend: ['HTML', 'CSS', 'React', 'React Native', 'Expo', 'Vite', 'TanStack Query'],
+  Backend:  ['Spring Boot', 'FastAPI', 'Node.js', 'Express', 'Firebase', 'Zitadel (OIDC)', 'Cloudinary'],
+  'Bases de données': ['SQL', 'PostgreSQL', 'SQLAlchemy'],
+  Tests:    ['JUnit', 'Testcontainers', 'Vitest', 'Pytest'],
+  DevOps:   ['Docker', 'GitHub Actions', 'Gradle', 'Render'],
+  IA:       ['Gemini API', 'Claude Code'],
+  Outils:   ['GitHub', 'Postman', 'Swagger', 'IntelliJ IDEA', 'Trello', 'Godot', 'Arduino', 'Automgen (Grafcet / Ladder)'],
   Créatif:  ['Montage vidéo'],
 }
 
@@ -33,9 +44,33 @@ const SKILL_ICONS: Record<string, IconType> = {
   HTML:       SiHtml5,
   CSS:        SiCss,
   React:      SiReact,
+  'React Native':   SiReact,
+  Expo:             SiExpo,
+  Vite:             SiVite,
+  'TanStack Query': SiReactquery,
+  'Spring Boot':    SiSpringboot,
+  FastAPI:          SiFastapi,
   'Node.js':  SiNodedotjs,
+  Express:          SiExpress,
   Firebase:   SiFirebase,
+  'Zitadel (OIDC)': SiOpenid,
+  Cloudinary:       SiCloudinary,
+  PostgreSQL:       SiPostgresql,
+  SQLAlchemy:       SiSqlalchemy,
+  JUnit:            SiJunit5,
+  Vitest:           SiVitest,
+  Pytest:           SiPytest,
+  Docker:           SiDocker,
+  'GitHub Actions': SiGithubactions,
+  Gradle:           SiGradle,
+  Render:           SiRender,
+  'Gemini API':     SiGooglegemini,
+  'Claude Code':    SiClaude,
   GitHub:     SiGithub,
+  Postman:          SiPostman,
+  Swagger:          SiSwagger,
+  'IntelliJ IDEA':  SiIntellijidea,
+  Trello:           SiTrello,
   Godot:      SiGodotengine,
   Arduino:    SiArduino,
 }
@@ -62,6 +97,9 @@ type Translation = {
     title: string
     viewProject: string
     lava:      { tag: string; title: string; sub: string; desc1: string; desc2: string; corner: string }
+    clipclap:  { tag: string; title: string; sub: string; desc: string; corner: string }
+    medassist: { tag: string; title: string; sub: string; desc: string; corner: string }
+    lavanpark: { tag: string; title: string; sub: string; desc: string; corner: string }
     homepage:  { tag: string; title: string; sub: string; desc: string; corner: string }
     melo:      { tag: string; title: string; sub: string; desc: string; corner: string }
     videoconf: { tag: string; title: string; sub: string; desc: string; corner: string }
@@ -94,7 +132,7 @@ const TRANSLATIONS: Record<Lang, Translation> = {
     },
     skills: {
       title:        'Compétences techniques',
-      categories:   { Langages: 'Langages', Frontend: 'Frontend', Backend: 'Backend', Outils: 'Outils', Créatif: 'Créatif' },
+      categories:   { Langages: 'Langages', Frontend: 'Frontend', Backend: 'Backend', 'Bases de données': 'Bases de données', Tests: 'Tests', DevOps: 'DevOps', IA: 'IA', Outils: 'Outils', Créatif: 'Créatif' },
       creativeSkill:'Montage vidéo',
     },
     projects: {
@@ -105,6 +143,24 @@ const TRANSLATIONS: Record<Lang, Translation> = {
         desc1: "Développement d'un système de transaction en cryptomonnaie entièrement confidentiel et privé, conçu pour être accessible au grand public. L'objectif était de concevoir une expérience utilisateur simple et intuitive tout en garantissant un niveau de confidentialité maximal côté protocole.",
         desc2: "Projet réalisé dans le cadre d'un hackathon international regroupant des étudiants de plusieurs universités européennes.",
         corner: 'Oxford University',
+      },
+      clipclap: {
+        tag: 'HEH DST · Développement web avancé · 2026', title: 'Clic & Clap',
+        sub: 'Spring Boot 4 · Spring Modulith · React · PostgreSQL · Zitadel · Docker',
+        desc: "Plateforme de mise en relation entre photographes/vidéastes et clients souhaitant réserver une prestation. Monolithe modulaire Spring Modulith (9 modules communiquant par événements), authentification OIDC via Zitadel, médias sur Cloudinary, tests JUnit et Testcontainers, CI GitHub Actions et image Docker multi-stage. Projet en binôme.",
+        corner: 'HEH · Mons',
+      },
+      medassist: {
+        tag: 'HEH DST · Projet agile IA · 2026', title: 'MedAssist',
+        sub: 'FastAPI · React · Gemini API · PostgreSQL · Render · Scrum',
+        desc: "Outil de pré-consultation médicale assistée par IA : le patient décrit ses symptômes à un assistant conversationnel et le médecin reçoit une synthèse structurée avant la consultation. Garde-fous stricts (aucun diagnostic, alerte en cas d'urgence), données chiffrées, hébergement UE. Projet Scrum à trois, j'étais Scrum Master du sprint 1.",
+        corner: 'HEH · Mons',
+      },
+      lavanpark: {
+        tag: 'HEH DST · Applications hybrides · 2026', title: 'Lavanpark',
+        sub: 'React Native · Expo · React · Express · TanStack Query',
+        desc: "Application hybride web et mobile pour un parc d'attractions fictif : horaires, attractions, temps d'attente simulés en direct et billets. API REST Express avec cache HTTP (ETags, Cache-Control, 304 Not Modified), frontend React et application mobile Expo partageant la même logique de données.",
+        corner: 'HEH · Mons',
       },
       homepage: {
         tag: 'Personnel · 2026', title: 'Homepage',
@@ -162,7 +218,7 @@ const TRANSLATIONS: Record<Lang, Translation> = {
     },
     skills: {
       title:        'Technical Skills',
-      categories:   { Langages: 'Languages', Frontend: 'Frontend', Backend: 'Backend', Outils: 'Tools', Créatif: 'Creative' },
+      categories:   { Langages: 'Languages', Frontend: 'Frontend', Backend: 'Backend', 'Bases de données': 'Databases', Tests: 'Testing', DevOps: 'DevOps', IA: 'AI', Outils: 'Tools', Créatif: 'Creative' },
       creativeSkill:'Video editing',
     },
     projects: {
@@ -173,6 +229,24 @@ const TRANSLATIONS: Record<Lang, Translation> = {
         desc1: "We built a fully private and confidential cryptocurrency payment system, designed so anyone can use it without technical knowledge. The challenge was making the experience feel effortless while keeping the protocol as private as possible under the hood.",
         desc2: "Built during an international hackathon that brought together students from across European universities.",
         corner: 'Oxford University',
+      },
+      clipclap: {
+        tag: 'HEH DST · Advanced Web Development · 2026', title: 'Clic & Clap',
+        sub: 'Spring Boot 4 · Spring Modulith · React · PostgreSQL · Zitadel · Docker',
+        desc: "A platform connecting photographers and videographers with clients who want to book a shoot. Built as a Spring Modulith modular monolith (9 modules talking through events), with OIDC sign-in via Zitadel, media on Cloudinary, JUnit and Testcontainers tests, GitHub Actions CI and a multi-stage Docker image. Built as a pair.",
+        corner: 'HEH · Mons',
+      },
+      medassist: {
+        tag: 'HEH DST · Agile AI Project · 2026', title: 'MedAssist',
+        sub: 'FastAPI · React · Gemini API · PostgreSQL · Render · Scrum',
+        desc: "An AI-assisted medical pre-consultation tool: patients describe their symptoms to a conversational assistant, and the doctor gets a structured summary before the appointment. Strict safeguards (no diagnosis, emergency alerts), encrypted data and EU hosting. A three-person Scrum project where I was Scrum Master for sprint 1.",
+        corner: 'HEH · Mons',
+      },
+      lavanpark: {
+        tag: 'HEH DST · Hybrid Applications · 2026', title: 'Lavanpark',
+        sub: 'React Native · Expo · React · Express · TanStack Query',
+        desc: "A hybrid web and mobile app for a fictional theme park: opening hours, rides, live simulated wait times and tickets. Express REST API with HTTP caching (ETags, Cache-Control, 304 Not Modified), a React web frontend and an Expo mobile app sharing the same data layer.",
+        corner: 'HEH · Mons',
       },
       homepage: {
         tag: 'Personal · 2026', title: 'Homepage',
@@ -230,7 +304,7 @@ const TRANSLATIONS: Record<Lang, Translation> = {
     },
     skills: {
       title:        'Habilidades técnicas',
-      categories:   { Langages: 'Lenguajes', Frontend: 'Frontend', Backend: 'Backend', Outils: 'Herramientas', Créatif: 'Creativo' },
+      categories:   { Langages: 'Lenguajes', Frontend: 'Frontend', Backend: 'Backend', 'Bases de données': 'Bases de datos', Tests: 'Pruebas', DevOps: 'DevOps', IA: 'IA', Outils: 'Herramientas', Créatif: 'Creativo' },
       creativeSkill:'Edición de vídeo',
     },
     projects: {
@@ -241,6 +315,24 @@ const TRANSLATIONS: Record<Lang, Translation> = {
         desc1: "Desarrollamos un sistema de pagos en criptomoneda completamente confidencial, pensado para que cualquier persona pueda usarlo sin conocimientos técnicos. El reto fue hacer que la experiencia resultara sencilla e intuitiva sin comprometer la privacidad a nivel de protocolo.",
         desc2: "Proyecto realizado durante un hackathon internacional con estudiantes de varias universidades europeas.",
         corner: 'Oxford University',
+      },
+      clipclap: {
+        tag: 'HEH DST · Desarrollo web avanzado · 2026', title: 'Clic & Clap',
+        sub: 'Spring Boot 4 · Spring Modulith · React · PostgreSQL · Zitadel · Docker',
+        desc: "Plataforma que conecta fotógrafos y videógrafos con clientes que quieren reservar un servicio. Monolito modular con Spring Modulith (9 módulos que se comunican por eventos), autenticación OIDC con Zitadel, medios en Cloudinary, pruebas con JUnit y Testcontainers, CI con GitHub Actions e imagen Docker multi-stage. Proyecto en pareja.",
+        corner: 'HEH · Mons',
+      },
+      medassist: {
+        tag: 'HEH DST · Proyecto ágil IA · 2026', title: 'MedAssist',
+        sub: 'FastAPI · React · Gemini API · PostgreSQL · Render · Scrum',
+        desc: "Herramienta de preconsulta médica asistida por IA: el paciente describe sus síntomas a un asistente conversacional y el médico recibe un resumen estructurado antes de la consulta. Salvaguardas estrictas (ningún diagnóstico, alerta en caso de urgencia), datos cifrados y alojamiento en la UE. Proyecto Scrum de tres personas, fui Scrum Master del sprint 1.",
+        corner: 'HEH · Mons',
+      },
+      lavanpark: {
+        tag: 'HEH DST · Aplicaciones híbridas · 2026', title: 'Lavanpark',
+        sub: 'React Native · Expo · React · Express · TanStack Query',
+        desc: "Aplicación híbrida web y móvil para un parque de atracciones ficticio: horarios, atracciones, tiempos de espera simulados en directo y entradas. API REST con Express y caché HTTP (ETags, Cache-Control, 304 Not Modified), frontend React y app móvil Expo que comparten la misma capa de datos.",
+        corner: 'HEH · Mons',
       },
       homepage: {
         tag: 'Personal · 2026', title: 'Homepage',
@@ -466,6 +558,36 @@ export function PortfolioPage() {
                   <a href="https://github.com/hugodvrs4/Lava-Payments" target="_blank" rel="noopener noreferrer" className="pp-project-link">GitHub →</a>
                 </div>
                 <span className="pp-project-corner">{t.projects.lava.corner}</span>
+              </div>
+
+              <div className="pp-project pp-project--mt">
+                <span className="pp-project-tag">{t.projects.clipclap.tag}</span>
+                <h2 className="pp-project-title">{t.projects.clipclap.title}</h2>
+                <p className="pp-project-sub">{t.projects.clipclap.sub}</p>
+                <p className="pp-project-desc">{t.projects.clipclap.desc}</p>
+                <div className="pp-project-links">
+                  <a href="https://github.com/spidermiriki/clip-clap" target="_blank" rel="noopener noreferrer" className="pp-project-link">GitHub →</a>
+                </div>
+                <span className="pp-project-corner">{t.projects.clipclap.corner}</span>
+              </div>
+
+              <div className="pp-project pp-project--mt">
+                <span className="pp-project-tag">{t.projects.medassist.tag}</span>
+                <h2 className="pp-project-title">{t.projects.medassist.title}</h2>
+                <p className="pp-project-sub">{t.projects.medassist.sub}</p>
+                <p className="pp-project-desc">{t.projects.medassist.desc}</p>
+                <div className="pp-project-links">
+                  <a href="https://gr7-med-assist-frontend.onrender.com/" target="_blank" rel="noopener noreferrer" className="pp-project-link">{t.projects.viewProject}</a>
+                </div>
+                <span className="pp-project-corner">{t.projects.medassist.corner}</span>
+              </div>
+
+              <div className="pp-project pp-project--mt">
+                <span className="pp-project-tag">{t.projects.lavanpark.tag}</span>
+                <h2 className="pp-project-title">{t.projects.lavanpark.title}</h2>
+                <p className="pp-project-sub">{t.projects.lavanpark.sub}</p>
+                <p className="pp-project-desc">{t.projects.lavanpark.desc}</p>
+                <span className="pp-project-corner">{t.projects.lavanpark.corner}</span>
               </div>
 
               <div className="pp-project pp-project--mt">
