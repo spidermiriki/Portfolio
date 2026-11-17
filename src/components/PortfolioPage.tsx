@@ -84,6 +84,8 @@ type Translation = {
     education: string
     languages: string
     hobbies: string
+    license: string
+    licenseValue: string
     hehDetail: [string, string]
     atheneeDetail: [string, string]
     hobbiesList: string[]
@@ -117,6 +119,8 @@ const TRANSLATIONS: Record<Lang, Translation> = {
       education:    'Formation',
       languages:    'Langues',
       hobbies:      'Loisirs',
+      license:      'Permis de conduire',
+      licenseValue: 'Permis B',
       hehDetail:    ['Bachelier en informatique', 'Mons · 2023 — Actuellement'],
       atheneeDetail:['CESS — Latin, Math, Sciences', 'La Louvière · 2016 — 2022'],
       hobbiesList:  ['Skateboard', 'Jeux vidéo', 'Cinéma', 'Montage vidéo'],
@@ -203,6 +207,8 @@ const TRANSLATIONS: Record<Lang, Translation> = {
       education:    'Education',
       languages:    'Languages',
       hobbies:      'Hobbies',
+      license:      "Driver's licence",
+      licenseValue: 'Category B',
       hehDetail:    ["Bachelor's in Computer Science", 'Mons · 2023 — Present'],
       atheneeDetail:['High School Diploma — Latin, Math, Sciences', 'La Louvière · 2016 — 2022'],
       hobbiesList:  ['Skateboarding', 'Video games', 'Cinema', 'Video editing'],
@@ -289,6 +295,8 @@ const TRANSLATIONS: Record<Lang, Translation> = {
       education:    'Formación',
       languages:    'Idiomas',
       hobbies:      'Aficiones',
+      license:      'Permiso de conducir',
+      licenseValue: 'Permiso B',
       hehDetail:    ['Grado en Informática', 'Mons · 2023 — Actualmente'],
       atheneeDetail:['Bachillerato — Latín, Matemáticas, Ciencias', 'La Louvière · 2016 — 2022'],
       hobbiesList:  ['Skateboard', 'Videojuegos', 'Cine', 'Edición de vídeo'],
@@ -498,6 +506,13 @@ export function PortfolioPage() {
                 <span className="pp-lang-level">{t.sidebar.langLevelLabels[level]}</span>
               </div>
             ))}
+          </div>
+
+          <div>
+            <div className="pp-section-title">{t.sidebar.license}</div>
+            <div className="pp-lang-row">
+              <span>{t.sidebar.licenseValue}</span>
+            </div>
           </div>
 
           <div>
